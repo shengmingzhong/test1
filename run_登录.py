@@ -115,11 +115,13 @@ def get_company():
     result3 = db.fetchall(sqlc)  # 注意：这里我假设您的 MysqlUtil 类有一个 execute_query 方法
     print(result3)
     count3 = result3[0]['SUM(new_price)']   # 假设 execute_query 返回的是一个结果集，我们需要第一个结果（即 COUNT(*) 的值）
+    price=count3/count2
+
 
     re_data = {
            'company_num': count1,
            'job_num': count2,
-           'avg_salary': count3,
+           'avg_salary': price,
     }
     # json = request.json
     # print('recv:', json)
