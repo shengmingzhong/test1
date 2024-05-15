@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录框</title>
+	<script>  
+		function jumpToPage() {  
+			// event.preventDefault();
+			// var username = document.getElementById('username').value;  
+    		// var password = document.getElementById('password').value;
+			// if (username === 'admin' && password === 'password'){
+       	 	// 	window.location.href = "index.html"; // 跳转到首页（假设首页文件名为index.html）  
+   			// } else {  
+        	// 	alert('Invalid username or password');  
+    		// } 
+			window.location.href = "index.html"; // 将'目标页面的URL'替换为你想要跳转到的页面的实际URL  
+		}  
+		function sign() {  
+			window.location.href = "signup.html"; // 将'目标页面的URL'替换为你想要跳转到的页面的实际URL  
+		} 	
+		</script> 
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		body{
+
+			/* 设置背景图片 */
+			background-image: url('static/img/me/gouwu1.jpg');
+
+			/* 控制背景图片是否重复 */
+			background-repeat: no-repeat;
+
+			/* 控制背景图片的大小 */
+			background-size: cover; /* 或者使用 'contain'、'auto'、具体的宽度和高度值等 */
+
+			/* 控制背景图片的位置 */
+			background-position: center center; /* 或者使用 'top left'、'bottom right' 等 */
+
+			/* 其他样式，比如高度、宽度、内边距、外边距等 */
+			height: 100vh; /* 使元素高度与视口高度相同 */
+			width: 100%; /* 使元素宽度与父元素相同 */
+			padding: 20px; /* 添加一些内边距 */
+			box-sizing: border-box; /* 确保内边距和边框不会增加元素的宽度 */
+
+		}
+		#container{
+			width: 380px;
+			height: 300px;
+			margin-left: 400px;
+			margin-top: 100px;
+			border-radius: 8px;
+			background-color: #fff;
+		}
+		.header{
+			width: 100%;
+			height: 50px;
+			background-color: #9966CC;
+			font-size: 26px;
+			color: #fff;
+			line-height: 50px;
+			text-align: center;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+		}
+		.form-body{
+			margin-top: 48px;
+		}
+		label{
+			width: 82px;
+			margin-left: 18px;
+		}
+		.form-group{
+			margin-top: 18px;
+		}
+		.form-input{
+			height: 33px;
+			width: 260px;
+			padding-left: 8px;
+			background-color: #F0FFFF;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		.btn{
+			margin-top: 30px;
+		}
+		.form-btn{
+			height: 38px;
+			width: 150px;
+			color:#fff;
+			border: 1px solid #eee;
+			border-radius: 5px;
+			box-shadow: 0px 2px 3px #ccc;
+		}
+		.form-btn-primary{
+			margin-left: 28px;
+			background-color: #337AB7;
+		}
+		.form-btn-warning{
+			margin-left: 15px;
+			background-color: #F0AD4E;
+		}
+		.footer{
+			margin-top: 18px;
+			color: #ccc;
+			text-align: center;
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="header">
+			<p>登录</p>
+		</div>
+		<div class="form-body">
+			<form action="login" method="post">
+				<div class="form-group">
+					<label for="username">用户名：</label>
+					<input type="text" id="username" name="username" class="form-input">
+				</div>
+				<div class="form-group">
+					<label for="password">密&nbsp;&nbsp;&nbsp;码：</label>
+					<input type="password" id="password"name="password" class="form-input">
+				</div>
+				<div class="btn">
+				<input type="submit" value="登录" class="form-btn form-btn-primary">
+				<!-- <a href="index.html" class="form-btn form-btn-primary">登录</a>  -->
+
+				<!-- <input type="button" value="注册" class="form-btn form-btn-warning"> -->
+				<input type="submit" value="注册" class="form-btn form-btn-warning">
+					<div class="footer">
+					<p>by Gavin 钟诗玲</p>
+				</div>
+
+			</div>
+			</form>
+
+
+		</div>
+
+	</div>
+</body>
+<script>
+	obj = document.getElementById('container');
+	cWidth = window.innerWidth;
+	cHeight = window.innerHeight;
+	obj.style.marginLeft = (cWidth - 380)/2+"px";
+	obj.style.marginTop = (cHeight - 300)/2+"px";
+	window.onresize=function(){  
+	                cWidth = window.innerWidth;
+					cHeight = window.innerHeight;
+					obj.style.marginLeft = (cWidth - 380)/2+"px";
+					obj.style.marginTop = (cHeight - 300)/2+"px"; 
+	            } 
+</script>
+</html>

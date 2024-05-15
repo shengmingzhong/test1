@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>珠海商城</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+	<script src="/static/js/jquery.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/static/css/mall.css">
+</head>
+<body>
+	<!-- 顶部导航条 -->
+	<div class="nav">
+		<ul>
+			<li class="nav-pull-down location"><img src="/static/img/icon_location.png"> 珠海</li>
+			<li><a href="https://pro.jd.com/mall/active/Y9FVe619hMoajzqpxky1CQQJAkk/index.html">手机商城</a></li>
+			<li><a href="#">网站导航</a></li>
+			<li><a href="/help">客户服务</a></li>
+			<li><a href="#">企业采购</a></li>
+			<!-- <li><a href="#">商城会员</a></li> -->
+			<li class="nav-pull-down my-shop"><a href="#">我的商城</a> <span class="glyphicon glyphicon-menu-down"></span></li>
+			{% if session['logged_in'] %}
+			<li class="login-signup"><a href="/login">欢迎{{session['username']}} </a><span class="text-color-red"><a href="/logout">退出</a></span></li>
+			{% else %}
+			<li class="login-signup">你好，请<a href="/login">登录 </a><span class="text-color-red"><a href="/register">免费注册</a></span></li>
+			{% endif %}
+		</ul>
+	</div>
+
+
+    <div class="inner_body">
+        <form action="/add_product" id="product_form" method="post" enctype="multipart/form-data">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品类别</span>
+                <div class="dropdown menu_cate">
+                    <button class="btn btn-default dropdown-toggle" type="button"
+                            id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="true">
+                        <span class="one_cate">一级类别</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        {% for category in categorys %}
+                            <li id="{{ category.id }}" class="one_li"><a
+                                    href="#">{{ category.cname }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品名称</span>
+                <input type="text" maxlength="50" id="pname"
+                       class="form-control must_input_product" name="pname"
+                       placeholder="商品名称" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品描述</span>
+                <textarea class="form-control must_input_product" id="pDesc" name="pDesc"
+                          rows="3" placeholder="说说你的商品吧~"></textarea>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品数量</span>
+                <input type="number" max="100" maxlength="2" id="counts"
+                       onkeyup="this.value=this.value.replace(/\D/g,'')"
+                       onafterpaste="this.value=this.value.replace(/\D/g,'')"
+                       class="form-control must_input_product" name="counts"
+                       placeholder="商品数量" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品原价</span>
+                <input type="number" maxlength="8" id="old_price"
+                       onkeyup="value=value.replace(/[^\d.]/g,'')"
+                       class="form-control must_input_product" name="old_price" step="0.01"
+                       placeholder="商品原价" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品售价</span>
+                <input type="number" maxlength="8"
+                       onkeyup="value=value.replace(/[^\d.]/g,'')" id="new_price"
+                       class="form-control must_input_product" name="new_price" step="0.01"
+                       placeholder="你出价" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">商品照片</span>
+                <div class="htmleaf-container">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <input type="file" name="file" multiple id="ssi-upload"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            {#<button type="submit" class="btn btn-success fb" style="width: 100%;"
+                    onclick="checkAll()">发布商品
+            </button>
+            #}
+             <input type="submit" class="btn btn-success fb" style="width: 100%;" value="发布商品">
+        </form>
+    </div>
+
+  </table>
+	</div>
+</body>
+<script src="/static/js/mall.js"></script>
+</html>
